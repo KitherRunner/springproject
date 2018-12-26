@@ -12,18 +12,35 @@
 
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver"
-          p:prefix="/WEB-INF/" p:suffix=".jsp" />
+          p:prefix="/WEB-INF/" p:suffix=".jsp"/>
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
+
+    <!-- 使用默认的servlet处理静态资源 -->
+    <!--<mvc:default-servlet-handler />-->
+
+    <!-- 放行静态资源 -->
+    <mvc:resources mapping="js/**" location="classpath:js/"/>
+    <mvc:resources mapping="css/**" location="classpath:css/"/>
+
+
+    <!-- 下面两个资源都要放行，因为swagger-ui界面的显示也需要webjars引入的文件 -->
+    <!-- 放行swagger-ui.html，这样才可以访问到swagger-ui界面 -->
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
+
+    <!-- 放行通过webjars的方式引入的静态资源，如：bootstrap等
+        放行webjars一下的多级的访问方式，实际指向 /META-INF/resources/webjars/
+     -->
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
 
     <!-- 开启aop -->
-    <aop:annotation-driven />
+    <aop:annotation-driven/>
 
     <!-- 开启注解事务 -->
-    <tx:annotation-driven />
+    <tx:annotation-driven/>
 
     <!-- 事务管理器 -->
     <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 </beans>

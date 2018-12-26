@@ -21,17 +21,19 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @GetMapping("hello")
+    @GetMapping(value = "hello", produces = "text/html;charset=UTF-8")
     @ResponseBody
+    @ApiOperation(value = "hello", notes = "测试hello访问", response = String.class, httpMethod = "GET")
     public String hello() {
         return "helloworld";
     }
 
 
-    @GetMapping("{id}")
+    @GetMapping(value = "{id}", produces = "application/json;charset=UTF-8")
     @ResponseBody
     @ApiOperation(value = "find", notes = "根据id查询用户", response = User.class, httpMethod = "GET")
-    @ApiImplicitParam(value = "id", name = "编号", required = true, dataType = "int", paramType = "path", defaultValue = "1")
+    // 注意注解的每个属性与swagger-ui界面的对应
+    @ApiImplicitParam(value = "编号", name = "id", required = true, dataType = "int", paramType = "path", defaultValue = "1")
     public User find(@PathVariable("id") Integer id) {
         return userService.find(id);
     }

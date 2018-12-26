@@ -5,13 +5,17 @@ import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(value = "User", description = "用户实体类")
 public class User {
-    @ApiModelProperty(value = "id", name = "编号", notes = "id", dataType = "int")
+
+    @ApiModelProperty(value = "编号", name = "id", notes = "id", dataType = "int")
     private Integer id;
-    @ApiModelProperty(value = "name", name = "姓名", notes = "name", dataType = "String")
+
+    @ApiModelProperty(value = "姓名", name = "name", notes = "name", dataType = "String")
     private String name;
-    @ApiModelProperty(value = "password", name = "密码", notes = "password", dataType = "String")
+
+    @ApiModelProperty(value = "密码", name = "password", notes = "password", dataType = "String")
     private String password;
-    @ApiModelProperty(value = "gender", name = "性别", notes = "gender", dataType = "int")
+
+    @ApiModelProperty(value = "性别", name = "gender", notes = "gender", dataType = "int")
     private Integer gender;
 
     public Integer getId() {
