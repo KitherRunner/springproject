@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ssm-cache" />
         <module name="ssm-druid" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ssm-cache" target="1.8" />
       <module name="ssm-druid" target="1.8" />
     </bytecodeTargetLevel>
   </component>
