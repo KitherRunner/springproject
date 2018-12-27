@@ -1,0 +1,16 @@
+package com.kingdee;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@MapperScan("com.kingdee.mapper")
+public class SsmCacheApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SsmCacheApplication.class, args);
+    }
+
+}
+
