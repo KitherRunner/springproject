@@ -1,29 +1,16 @@
 package com.kingdee.bean;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-
-import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "user")
-@DynamicUpdate
-@DynamicInsert
 public class User implements Serializable {
     private static final long serialVersionUID = 2684609809780170734L;
 
-    @Id
-    @GeneratedValue
     private Integer id;
 
-    @Column(name="name",columnDefinition = "varchar(50) comment '用户名'")
     private String name;
 
-    @Column(name = "password",columnDefinition = "varchar(50) comment '密码'")
     private String password;
 
-    @Column(name = "gender",columnDefinition = "int default 0 comment '性别(0男1女)'")
     private Integer gender;
 
     public static long getSerialVersionUID() {
