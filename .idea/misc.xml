@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/ssm-cache" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm-apidoc" />
     <file type="web" url="file://$PROJECT_DIR$/ssm-druid" />
   </component>
   <component name="MavenProjectsManager">
@@ -9,6 +10,7 @@
       <list>
         <option value="$PROJECT_DIR$/ssm-druid/pom.xml" />
         <option value="$PROJECT_DIR$/ssm-cache/pom.xml" />
+        <option value="$PROJECT_DIR$/ssm-apidoc/pom.xml" />
       </list>
     </option>
   </component>
