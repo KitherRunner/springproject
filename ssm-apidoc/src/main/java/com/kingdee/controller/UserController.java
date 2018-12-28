@@ -20,6 +20,21 @@ public class UserController {
     private UserService userService;
 
 
+    /**
+     * @api {get} /user/:id  根据id查询用户信息
+     * @apiName find
+     * @apiGroup User
+     *
+     * @apiParam {Number} id Users unique ID
+     *
+     * @apiSuccessExample
+     *      {
+     *          "id":1,
+     *          "name":"张三",
+     *          "password":"张三",
+     *          "gender":1
+     *      }
+     */
     @GetMapping(value = "/user/{id}", produces = "application/json;charset=utf-8")
     @ApiOperation(value = "find", notes = "根据id查询用户", httpMethod = "GET")
     @ResponseBody
