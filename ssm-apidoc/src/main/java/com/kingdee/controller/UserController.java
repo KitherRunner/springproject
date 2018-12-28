@@ -25,7 +25,7 @@ public class UserController {
      * @apiName find
      * @apiGroup User
      *
-     * @apiParam {Number} id Users unique ID
+     * @apiParam {Number} id 用户编号
      *
      * @apiSuccessExample
      *      {
