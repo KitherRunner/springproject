@@ -6,11 +6,8 @@ public class User implements Serializable {
     private static final long serialVersionUID = 2684609809780170734L;
 
     private Integer id;
-
     private String name;
-
     private String password;
-
     private Integer gender;
 
     public static long getSerialVersionUID() {
