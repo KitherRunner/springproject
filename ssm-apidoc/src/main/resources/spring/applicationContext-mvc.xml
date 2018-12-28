@@ -12,6 +12,7 @@
 
     <mvc:annotation-driven/>
 
-    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars"/>
-    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources" />
+    <!-- 别忘了location最后的斜杠 -->
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/ "/>
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
 </beans>
