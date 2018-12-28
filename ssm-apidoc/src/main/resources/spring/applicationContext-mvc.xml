@@ -10,5 +10,8 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars"/>
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources" />
 </beans>
