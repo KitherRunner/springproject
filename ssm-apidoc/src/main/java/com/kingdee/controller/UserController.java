@@ -28,12 +28,13 @@ public class UserController {
      *
      * @apiSampleRequest http://localhost:8080/user/:id
      *
-     * @apiSuccessExample {
-     * "id":1,
-     * "name":"张三",
-     * "password":"张三",
-     * "gender":1
-     * }
+     * @apiSuccessExample   user
+     *  {
+     *      "id":1,
+     *      "name":"张三",
+     *      "password":"张三",
+     *      "gender":1
+     *  }
      */
     @GetMapping(value = "/user/{id}", produces = "application/json;charset=utf-8")
     @ApiOperation(value = "find", notes = "根据id查询用户", httpMethod = "GET")
@@ -49,14 +50,14 @@ public class UserController {
      *
      * @apiGroup User
      *
-     * @apiParam {String} user.name 姓名
-     * @apiParam {String} user.password 密码
-     * @apiParam {Integer} [user.gender=0] 性别(0男1女)
+     * @apiParam {String} name 姓名
+     * @apiParam {String} password 密码
+     * @apiParam {Integer} [gender=0] 性别(0男1女)
      *
      *
      * @apiSampleRequest http://localhost:8080/add
      *
-     * @apiSuccessExample
+     * @apiSuccessExample  user
      *      {
      *          "id":"1",
      *          "name":"张三",
