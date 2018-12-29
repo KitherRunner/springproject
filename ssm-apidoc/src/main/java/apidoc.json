@@ -1,0 +1,7 @@
+{
+  "name":"ssm-apidoc",
+  "description":"使用springmvc集成apidoc完成接口文档的输出",
+  "title":"apidoc简单使用",
+  "url":"http://localhost:8080/api",
+  "version":"1.0.1"
+}

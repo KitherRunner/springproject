@@ -15,6 +15,9 @@
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver" p:prefix="/WEB-INF/" p:suffix=".jsp" />
 
+    <!-- 别忘了location最后的斜杠 -->
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/ "/>
+    <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
     <aop:annotation-driven />
 
     <tx:annotation-driven />
