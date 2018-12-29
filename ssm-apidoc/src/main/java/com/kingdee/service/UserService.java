@@ -9,4 +9,6 @@ public interface UserService {
     User update(User user);
 
     boolean delete(Integer id);
+
+    User add(User user);
 }
