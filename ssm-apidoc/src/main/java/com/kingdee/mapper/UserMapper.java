@@ -1,10 +1,8 @@
 package com.kingdee.mapper;
 
 import com.kingdee.bean.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import com.kingdee.sqlprovider.MapperSqlProvider;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
@@ -17,4 +15,13 @@ public interface UserMapper {
 
     @Delete("delete from user where id = #{id}")
     int delete(Integer id);
+
+    /**
+     * 使用@InsertProvider调用动态的insert SQL语句
+     *
+     * @param user
+     */
+    @InsertProvider(type = MapperSqlProvider.class, method = "addUser")
+    @SelectKey(keyProperty = "id", keyColumn = "id", statement = "select last_insert_id()", resultType = Integer.class, before = false)
+    void add(User user);
 }

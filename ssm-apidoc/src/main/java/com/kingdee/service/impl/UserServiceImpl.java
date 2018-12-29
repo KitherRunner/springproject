@@ -27,4 +27,10 @@ public class UserServiceImpl implements UserService {
     public boolean delete(Integer id) {
         return userMapper.delete(id) > 0;
     }
+
+    @Override
+    public User add(User user) {
+        userMapper.add(user);
+        return userMapper.find(user.getId());
+    }
 }
