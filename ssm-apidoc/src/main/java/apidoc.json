@@ -3,5 +3,6 @@
   "description":"使用springmvc集成apidoc完成接口文档的输出",
   "title":"apidoc简单使用",
   "url":"http://localhost:8080",
+  "sampleUrl":"http://localhost:8080",
   "version":"1.0.1"
 }
