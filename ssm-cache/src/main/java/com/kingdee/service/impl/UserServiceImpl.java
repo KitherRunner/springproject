@@ -29,20 +29,21 @@ public class UserServiceImpl implements UserService {
      *  At least one cache should be provided per cache operation.
      */
     // 设置缓存名称为 users
-    @Cacheable("users")
+    @Cacheable(value = "users", key = "#id")
     @Override
     public User find(Integer id) {
         return userMapper.find(id);
     }
 
     /**
-     * 新增用户开启缓存，每次新增用户时刷新缓存
+     * 新增用户开启缓存，每次新增用户时更新缓存
      *
      * @param user
      * @return
      */
-    // 每次必定执行方法并刷新缓存
-    @CachePut
+    // 每次必定执行方法并更新缓存(更新指定key的缓存)
+    // @CachePut(value = "users", key = "#user.id") // 从参数中取值作为key
+    @CachePut(value = "users", key = "#result.id") // 从返回值中取值作为key(@Cacheable：不可以从返回值中取值作为key，因为在方法执行前执行)
     @Override
     public User add(User user) {
         userMapper.add(user);
@@ -54,8 +55,9 @@ public class UserServiceImpl implements UserService {
      *
      * @param id
      */
-    //  清空缓存
-    @CacheEvict
+    //  删除对应缓存
+    @CacheEvict(value = "user", key = "#id")
+    // @CacheEvict(value = "users", allEntries = true) // 表示删除所有缓存
     @Override
     public int delete(Integer id) {
         return userMapper.delete(id);
