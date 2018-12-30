@@ -1,7 +1,7 @@
 package com.kingdee.mapper;
 
 import com.kingdee.bean.User;
-import com.kingdee.sqlprovider.MapperSqlProvider;
+import com.kingdee.sqlProvider.MapperSqlProvider;
 import org.apache.ibatis.annotations.*;
 
 @Mapper
