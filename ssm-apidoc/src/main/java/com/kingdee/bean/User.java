@@ -18,8 +18,14 @@ public class User implements Serializable {
     @ApiModelProperty(name = "gender",value = "性别(0男1女)",dataType = "Integer")
     private Integer gender;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public User() {
+    }
+
+    public User(Integer id, String name, String password, Integer gender) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.gender = gender;
     }
 
     public Integer getId() {
