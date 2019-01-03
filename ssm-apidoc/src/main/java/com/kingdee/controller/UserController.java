@@ -122,18 +122,19 @@ public class UserController {
         row.createCell(3, CellType.STRING).setCellValue("用户性别");
 
         // 遍历集合生成数据
-        for (int i = 1, size = users.size(); i < size; i++) {
+        for (int i = 0, size = users.size(); i < size; i++) {
             User user = users.get(i);
-            SXSSFRow sheetRow = sheet.createRow(i);
+            SXSSFRow sheetRow = sheet.createRow(i + 1);
             sheetRow.createCell(0, CellType.NUMERIC).setCellValue(Optional.of(user.getId()).orElse(0));
             sheetRow.createCell(1, CellType.STRING).setCellValue(Optional.of(user.getName()).orElse(""));
             sheetRow.createCell(2, CellType.STRING).setCellValue(Optional.of(user.getPassword()).orElse(""));
-            sheetRow.createCell(3, CellType.STRING).setCellValue("1".equals(user.getGender()) ? "男" : "女");
+            sheetRow.createCell(3, CellType.STRING).setCellValue(1 == user.getGender() ? "男" : "女");
         }
 
         // 将文件写入输出流
         // 设置文件导出格式
         String filaName = "Users Information_".concat(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).concat(".xlsx");
+        // 必须设置一下两个属性
         response.setContentType("application/vnd.ms-excel;charset=UTF-8");
         response.setHeader("Content-disposition", "attachment;filename=" + filaName);
         OutputStream outputStream = response.getOutputStream();

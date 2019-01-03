@@ -4,7 +4,6 @@ import com.kingdee.bean.User;
 import org.apache.ibatis.jdbc.SQL;
 
 public class MapperSqlProvider {
-
     public String addUser(User user) {
         return new SQL() {{
             // 插入数据的表
