@@ -134,7 +134,7 @@ public class UserController {
         // 将文件写入输出流
         // 设置文件导出格式
         String filaName = "Users Information_".concat(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).concat(".xlsx");
-        // 必须设置一下两个属性
+        // 必须设置以下两个属性
         response.setContentType("application/vnd.ms-excel;charset=UTF-8");
         response.setHeader("Content-disposition", "attachment;filename=" + filaName);
         OutputStream outputStream = response.getOutputStream();
