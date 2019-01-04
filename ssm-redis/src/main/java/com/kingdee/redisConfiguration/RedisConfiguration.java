@@ -49,7 +49,9 @@ public class RedisConfiguration {
     public RedisCacheManager userCacheManager(RedisConnectionFactory connectionFactory) {
         RedisCacheConfiguration cacheConfig = RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(duration)
+                // 设置key的序列化方式
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
+                // 设置value的序列化方式
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new Jackson2JsonRedisSerializer(User.class)))
                 .disableCachingNullValues();
         RedisCacheManager redisCacheManager = RedisCacheManager.builder(connectionFactory)
@@ -62,7 +64,9 @@ public class RedisConfiguration {
      */
     public RedisCacheManager employeeCacheManager(RedisConnectionFactory connectionFactory) {
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig().entryTtl(duration)
+                // 设置key的序列化方式
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
+                // 设置value的序列化方式
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new Jackson2JsonRedisSerializer(Employee.class)))
                 .disableCachingNullValues();
         RedisCacheManager redisCacheManager = RedisCacheManager.builder(connectionFactory)

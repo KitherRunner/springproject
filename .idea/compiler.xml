@@ -9,12 +9,14 @@
         <module name="ssm-apidoc" />
         <module name="ssm-cache" />
         <module name="ssm-druid" />
+		<module name="ssm-redis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ssm-apidoc" target="1.8" />
       <module name="ssm-cache" target="1.8" />
       <module name="ssm-druid" target="1.8" />
+	  <module name="ssm-redis" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
