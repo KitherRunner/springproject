@@ -6,17 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="springboot-redis" />
         <module name="ssm-apidoc" />
         <module name="ssm-cache" />
         <module name="ssm-druid" />
-		<module name="ssm-redis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="springboot-redis" target="1.8" />
       <module name="ssm-apidoc" target="1.8" />
       <module name="ssm-cache" target="1.8" />
       <module name="ssm-druid" target="1.8" />
-	  <module name="ssm-redis" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

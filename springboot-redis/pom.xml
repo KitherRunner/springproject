@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kingdee</groupId>
-    <artifactId>ssm-redis</artifactId>
+    <artifactId>springboot-redis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ssm-redis</name>
     <description>Demo project for Spring Boot</description>

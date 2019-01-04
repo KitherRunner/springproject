@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/springboot-redis/springboot-redis.iml" filepath="$PROJECT_DIR$/springboot-redis/springboot-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm-apidoc/ssm-apidoc.iml" filepath="$PROJECT_DIR$/ssm-apidoc/ssm-apidoc.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm-cache/ssm-cache.iml" filepath="$PROJECT_DIR$/ssm-cache/ssm-cache.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm-druid/ssm-druid.iml" filepath="$PROJECT_DIR$/ssm-druid/ssm-druid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ssm-redis/ssm-redis.iml" filepath="$PROJECT_DIR$/ssm-redis/ssm-redis.iml" />
     </modules>
   </component>
 </project>
