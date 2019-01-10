@@ -11,7 +11,7 @@
     <groupId>com.kingdee</groupId>
     <artifactId>springboot-redis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ssm-redis</name>
+    <name>springboot-redis</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
