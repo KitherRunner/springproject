@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="bootstrap-modal:war">
+    <output-path>$PROJECT_DIR$/bootstrap-modal/target</output-path>
+    <root id="archive" name="bootstrap-modal.war">
+      <element id="artifact" artifact-name="bootstrap-modal:war exploded" />
+    </root>
+  </artifact>
+</component>

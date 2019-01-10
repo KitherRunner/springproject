@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="bootstrap-modal" />
         <module name="springboot-redis" />
         <module name="ssm-apidoc" />
         <module name="ssm-cache" />
@@ -14,6 +15,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="bootstrap-modal" target="1.8" />
       <module name="springboot-redis" target="1.8" />
       <module name="ssm-apidoc" target="1.8" />
       <module name="ssm-cache" target="1.8" />
