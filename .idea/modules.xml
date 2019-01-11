@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/bootstrap-modal/bootstrap-modal.iml" filepath="$PROJECT_DIR$/bootstrap-modal/bootstrap-modal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eurekademo/eurekademo.iml" filepath="$PROJECT_DIR$/eurekademo/eurekademo.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot-redis/springboot-redis.iml" filepath="$PROJECT_DIR$/springboot-redis/springboot-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm-apidoc/ssm-apidoc.iml" filepath="$PROJECT_DIR$/ssm-apidoc/ssm-apidoc.iml" />
       <module fileurl="file://$PROJECT_DIR$/ssm-cache/ssm-cache.iml" filepath="$PROJECT_DIR$/ssm-cache/ssm-cache.iml" />

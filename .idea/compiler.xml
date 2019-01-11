@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bootstrap-modal" />
+        <module name="eurekademo" />
         <module name="springboot-redis" />
         <module name="ssm-apidoc" />
         <module name="ssm-cache" />
@@ -16,6 +17,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bootstrap-modal" target="1.8" />
+      <module name="eurekademo" target="1.8" />
       <module name="springboot-redis" target="1.8" />
       <module name="ssm-apidoc" target="1.8" />
       <module name="ssm-cache" target="1.8" />
