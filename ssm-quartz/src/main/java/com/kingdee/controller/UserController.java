@@ -21,18 +21,18 @@ public class UserController {
     @GetMapping("{id}")
     @ResponseBody
     @ApiOperation(value = "find", notes = "根据ID查询用户信息", tags = "user", httpMethod = "GET", response = User.class, produces = "application/json;charset=utf-8")
-    @ApiImplicitParam(value = "用户编号", name = "id", required = true, defaultValue = "1", dataType = "path", paramType = "Integer")
+    @ApiImplicitParam(value = "用户编号", name = "id", required = true, dataType = "int", defaultValue = "1", paramType = "path")
     public User find(@PathVariable("id") Integer id) {
         return userService.find(id);
     }
 
-    @PostMapping("user")
+    @PostMapping("")
     @ResponseBody
-    @ApiOperation(value = "add", notes = "新增用户", tags = "user", httpMethod = "PUT", response = User.class, produces = "application/json;charset=utf-8")
+    @ApiOperation(value = "add", notes = "新增用户", tags = "user", httpMethod = "POST", response = User.class, produces = "application/json;charset=utf-8")
     @ApiImplicitParams({
-            @ApiImplicitParam(value = "用户编号", name = "id", required = true, defaultValue = "1", paramType = "Integer"),
-            @ApiImplicitParam(value = "用户名称", name = "name", required = true, defaultValue = "张三", paramType = "String"),
-            @ApiImplicitParam(value = "用户性别", name = "gender", required = false, defaultValue = "male", paramType = "String")
+            @ApiImplicitParam(value = "用户编号", name = "id", required = false, defaultValue = "1", dataType = "int", paramType = "query"),
+            @ApiImplicitParam(value = "用户名称", name = "name", required = true, defaultValue = "张三", dataType = "string", paramType = "query"),
+            @ApiImplicitParam(value = "用户性别", name = "gender", required = false, defaultValue = "male", dataType = "string", paramType = "query")
     })
     public User add(User user) {
         userService.add(user);

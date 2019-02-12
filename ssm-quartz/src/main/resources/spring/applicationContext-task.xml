@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置自动任务执行的任务池 -->
+    <bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="10"/>
+        <property name="maxPoolSize" value="150"/>
+        <property name="queueCapacity" value="200"/>
+    </bean>
+
+    <!-- 实例化定时任务执行类 -->
+    <bean id="consoleTask" class="com.kingdee.task.ConsoleTask" scope="singleton"/>
+
+    <!-- 配置一个定时任务 -->
+    <bean id="consoleJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 定时任务执行的目标类 -->
+        <property name="targetObject" ref="consoleTask"/>
+        <!-- 定时任务执行的目标类中的目标方法 -->
+        <property name="targetMethod" value="printHello"/>
+        <!-- 是否允许并发 -->
+        <property name="concurrent" value="false"/>
+
+        <property name="group" value="console"/>
+    </bean>
+
+    <!-- 配置定时任务执行的触发器 -->
+    <bean id="consoleTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="consoleJobDetail"/>
+        <!-- 触发器表达式：每隔5s运行一次 -->
+        <property name="cronExpression" value="0/5 * * * * ?"/>
+        <property name="group" value="console"/>
+        <property name="description" value="ConsoleTask自动任务的触发器"/>
+        <!-- 延时：10000ms -->
+        <property name="startDelay" value="10000"/>
+        <!-- 时区：上海 -->
+        <property name="timeZone" value="Asia/Shanghai"/>
+    </bean>
+
+    <!-- 配置自动任务的列表 -->
+    <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="consoleTrigger"/>
+            </list>
+        </property>
+        <property name="taskExecutor" ref="executor"/>
+    </bean>
+</beans>

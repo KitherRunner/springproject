@@ -1,17 +1,23 @@
 package com.kingdee.sqlprovider;
 
+import com.google.common.base.Strings;
 import com.kingdee.bean.User;
 import org.apache.ibatis.jdbc.SQL;
 
 public class MapperSqlProvider {
-    public String addUser(User user) {
+    public String addUser(final User user) {
         return new SQL() {{
             // 插入数据的表
             INSERT_INTO("user");
-            // 插入数据的字段
-            INTO_COLUMNS("name", "password", "gender");
-            // 对应的值(自己加引号)
-            INTO_VALUES("\"" + user.getName() + "\"", "\"" + user.getPassword() + "\"", user.getGender().toString());
+            if (!Strings.isNullOrEmpty(user.getName())) {
+                VALUES("name", "#{name}");
+            }
+            if (!Strings.isNullOrEmpty(user.getPassword())) {
+                VALUES("password", "#{password}");
+            }
+            if (user.getGender() != null) {
+                VALUES("gender", "#{gender}");
+            }
         }}.toString();
     }
 }
