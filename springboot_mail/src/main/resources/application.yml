@@ -1,0 +1,20 @@
+spring:
+  mail:
+    username: 1406754132@qq.com
+    password: empymwsjdmkbfica
+    protocol: smtp
+    default-encoding: UTF-8
+    test-connection: true
+    host: smtp.qq.com
+    port: 25  #qq邮件服务器的默认?是25
+    to: 1241978806@qq.com
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql:///kither?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+server:
+  port: 8080
+
+debug: true
