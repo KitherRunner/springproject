@@ -6,7 +6,7 @@ spring:
     default-encoding: UTF-8
     test-connection: true
     host: smtp.qq.com
-    port: 25  #qqÓÊ¼þ·þÎñÆ÷µÄÄ¬ÈÏ?ÊÇ25
+    port: 25  #qqï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½?ï¿½ï¿½25
     to: 1241978806@qq.com
 
   datasource:
@@ -14,7 +14,10 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql:///kither?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+  jpa:
+    show-sql: true
+
 server:
   port: 8080
 
-debug: true
+#debug: true
