@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd">
+
+
+    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="databaseType" value="mysql"/>
+    </bean>
+
+    <batch:job id="userJob" job-repository="jobRepository">
+        <batch:step id="userStep">
+            <batch:tasklet transaction-manager="transactionManager">
+                <batch:chunk reader="userReader" writer="userWriter" processor="userProcessor" commit-interval="2"/>
+            </batch:tasklet>
+            <batch:listeners>
+                <batch:listener ref="userReaderListener"/>
+                <batch:listener ref="userWriterListener"/>
+                <batch:listener ref="userProcessorListener"/>
+            </batch:listeners>
+        </batch:step>
+    </batch:job>
+
+    <bean class="org.springframework.batch.core.launch.support.SimpleJobLauncher" id="jobLauncher">
+        <property name="jobRepository" ref="jobRepository"/>
+    </bean>
+
+    <bean class="com.kither.batch.UserReader" id="userReader" scope="step">
+        <property name="date" value="#{jobParameters['date']}"/>
+    </bean>
+    <bean class="com.kither.batch.UserWriter" id="userWriter"/>
+    <bean class="com.kither.batch.UserProcessor" id="userProcessor"/>
+
+    <bean class="com.kither.batch.listener.UserReaderListener" id="userReaderListener"/>
+    <bean class="com.kither.batch.listener.UserWriterListener" id="userWriterListener"/>
+    <bean class="com.kither.batch.listener.UserProcessorListener" id="userProcessorListener"/>
+</beans>

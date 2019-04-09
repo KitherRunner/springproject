@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" id="executor">
+        <property name="corePoolSize" value="10"/>
+        <property name="maxPoolSize" value="120"/>
+        <property name="queueCapacity" value="150"/>
+        <property name="keepAliveSeconds" value="60"/>
+    </bean>
+
+    <bean class="com.kither.quartz.BatchQuartz" id="quartz"/>
+    <bean class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean" id="jobDetail">
+        <property name="concurrent" value="false"/>
+        <property name="targetObject" ref="quartz"/>
+        <property name="targetMethod" value="batchQuartz"/>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" id="cronTrigger">
+        <property name="jobDetail" ref="jobDetail"/>
+        <property name="cronExpression" value="0/5 * * * * ?"/>
+        <property name="startDelay" value="10000"/>
+        <property name="timeZone" value="Asia/Shanghai"/>
+    </bean>
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" id="scheduler">
+        <!-- 不配置数据源，配置了数据源之后会访问数据库，需要对应的表 -->
+        <!--<property name="dataSource" ref="dataSource" />-->
+        <property name="triggers">
+            <list>
+                <ref bean="cronTrigger"/>
+            </list>
+        </property>
+        <property name="taskExecutor" ref="executor"/>
+    </bean>
+
+</beans>
