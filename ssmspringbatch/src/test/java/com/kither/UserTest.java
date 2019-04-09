@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobParameter;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring/*.xml")
@@ -54,8 +58,8 @@ public class UserTest {
     @Test
     public void insertUser() throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/user/add").characterEncoding("utf-8")
-                .param("name", "李四").param("gender", "0")
-                .param("salary", "10000").param("info", "我是李四"))
+                .param("name", "赵六").param("gender", "1")
+                .param("salary", "10000").param("info", "我是赵六"))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
         String content = result.getResponse().getContentAsString();
         System.out.println(content);
@@ -76,7 +80,10 @@ public class UserTest {
 
     @Test
     public void testBatch() throws Exception {
-        JobExecution jobExecution = jobLauncher.run(job, new JobParameters());
+        Map<String, JobParameter> paraMap = new HashMap<>();
+        paraMap.put("date", new JobParameter(new Date()));
+        JobParameters jobParameters = new JobParameters(paraMap);
+        JobExecution jobExecution = jobLauncher.run(job, jobParameters);
         System.out.println("status: " + jobExecution.getStatus());
     }
 }

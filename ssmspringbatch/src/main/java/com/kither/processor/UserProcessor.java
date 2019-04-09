@@ -12,7 +12,7 @@ public class UserProcessor implements ItemProcessor<User, User> {
             user.setSalary(user.getSalary().multiply(new BigDecimal(2.5)));
             user.setInfo(user.getInfo() + "--processor mail");
         } else {
-            user.setSalary(user.getSalary().multiply(new BigDecimal(1.0)));
+            user.setSalary(user.getSalary().multiply(new BigDecimal(1.1)));
             user.setInfo(user.getInfo() + "--processor femail");
         }
         return user;

@@ -26,7 +26,11 @@
         </batch:step>
     </batch:job>
 
-    <bean id="userReader" class="com.kither.reader.UserReader"/>
+    <!-- Scope = step 变量后绑定固定写法，即可以在对象调用时绑定变量 -->
+    <bean id="userReader" class="com.kither.reader.UserReader" scope="step">
+        <!-- 传入一个时间参数，保证job唯一 -->
+        <property name="date" value="#{jobParameters['date']}" />
+    </bean>
     <bean id="userWriter" class="com.kither.writer.UserWriter"/>
     <bean id="userProcessor" class="com.kither.processor.UserProcessor"/>
 
