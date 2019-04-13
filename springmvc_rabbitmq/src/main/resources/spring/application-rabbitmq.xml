@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+    <context:property-placeholder location="classpath:rabbitmq.properties"/>
+
+    <bean class="com.rabbitmq.client.ConnectionFactory" id="connectionFactory">
+        <property name="username" value="${mq.username}"/>
+        <property name="password" value="${mq.password}"/>
+        <property name="host" value="${mq.host}"/>
+        <property name="port" value="${mq.port}"/>
+    </bean>
+
+
+    <!-- 定义连接工厂,用于创建连接等 -->
+    <rabbit:connection-factory id="factory" connection-factory="connectionFactory"/>
+
+    <!-- 定义admin,producer中的exchange,queue会自动的利用该admin自动在spring中生成 -->
+    <rabbit:admin connection-factory="factory"/>
+
+    <!-- queue 队列声明 -->
+    <rabbit:queue id="first-queue" auto-delete="false" durable="true" name="first-queue" exclusive="false"/>
+
+    <!-- exchange queue binging key 绑定 -->
+    <rabbit:direct-exchange name="first-exchange" durable="true" auto-delete="false" id="first-exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="first-queue" key="first-queue"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <!-- 定义rabbitmq模板,用于接收以及发送消息 -->
+    <rabbit:template connection-factory="factory" exchange="" id="rabbitmqTemplate" encoding="UTF-8"/>
+
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象 -->
+    <rabbit:listener-container connection-factory="factory" acknowledge="auto">
+        <rabbit:listener ref="rabbitCustomer" method="customeMessage" queues="first-queue"/>
+    </rabbit:listener-container>
+</beans>
