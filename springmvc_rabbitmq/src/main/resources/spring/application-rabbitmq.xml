@@ -28,7 +28,7 @@
     <rabbit:direct-exchange name="first-exchange" durable="true" auto-delete="false" id="first-exchange">
         <rabbit:bindings>
             <!-- 绑定队列及路由key -->
-            <rabbit:binding queue="first-queue" key="first-queue"></rabbit:binding>
+            <rabbit:binding queue="first-queue" key="sendDirect"></rabbit:binding>
         </rabbit:bindings>
     </rabbit:direct-exchange>
 
