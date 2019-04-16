@@ -19,7 +19,7 @@ public class RabbitProvider {
     public void sendMessage(Object object) {
         // 第一个参数为发送队列的名称，第二个参数为发送消息内容
         String json = new Gson().toJson(object);
-        rabbitTemplate.convertAndSend("sendDirect", json);
+        rabbitTemplate.convertAndSend("first-exchange","sendDirect", json);
         System.out.println("消息提供者发送消息");
     }
 }
