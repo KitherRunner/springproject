@@ -21,4 +21,28 @@ public class User implements Serializable {
     private String name;
     @ApiModelProperty(name = "gender", value = "用户性别", notes = "用户性别", allowEmptyValue = true, dataType = "String", example = "male")
     private String gender;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }
