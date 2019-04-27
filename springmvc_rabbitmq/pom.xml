@@ -6,7 +6,7 @@
 
     <groupId>com.kither</groupId>
     <artifactId>springmvc_rabbitmq</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
 
     <name>springmvc_rabbitmq Maven Webapp</name>
@@ -121,4 +121,17 @@
             </plugins>
         </pluginManagement>
     </build>
+    <!-- 配置nexus信息 -->
+    <distributionManagement>
+        <repository>
+            <id>kither_releases</id>
+            <name>releases</name>
+            <url>http://192.168.1.108:8081/repository/kither_releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>kither_snapshots</id>
+            <name>snapshots</name>
+            <url>http://192.168.1.108:8081/repository/kither_snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
