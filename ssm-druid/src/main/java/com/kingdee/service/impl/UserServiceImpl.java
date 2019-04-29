@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,6 +21,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.find(id);
     }
 
+    @Override
+    public List<User> findAll() {
+        return userMapper.findAll();
+    }
+
     public UserMapper getUserMapper() {
         return userMapper;
     }
@@ -26,4 +33,6 @@ public class UserServiceImpl implements UserService {
     public void setUserMapper(UserMapper userMapper) {
         this.userMapper = userMapper;
     }
+
+
 }
