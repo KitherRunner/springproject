@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kither.mapper.QuartzMapper">
+
+    <sql id="Base_Column_List">
+        id, `number`, `name` startDate, endDate, state, exeLink, cronExpression, `desc`, retryCount
+    </sql>
+
+    <insert id="add" parameterType="quartzBaseBean">
+        insert into t_ec_quartz(`number`, `name` startDate, endDate, state, exeLink, cronExpression, `desc`, retryCount)
+        value(#{number},#{name},#{startDate},#{endDate},#{state},#{exeLink},#{cronExpression},#{desc}.#{retryCount})
+    </insert>
+
+    <select id="findAll" resultType="quartzBaseBean">
+        select
+        <include refid="Base_Column_List"/>
+        from t_ec_quartz
+    </select>
+
+    <update id="enable">
+        update t_ec_quartz set state = 1 where id = #{id}
+    </update>
+
+    <update id="disabled">
+        update t_ec_quartz set state = 0 where id = #{id}
+    </update>
+</mapper>

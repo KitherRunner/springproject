@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kither.mapper.CodeRuleMapper">
+
+    <sql id="Base_Column_List">
+        id, `number`, `name` billType, lastUpdateTime, serialNuo, createDate, `length`, prefix
+    </sql>
+
+    <insert id="add" parameterType="com.kither.bean.CodeRule">
+        insert into t_ec_coderule (`number`, `name` billType, lastUpdateTime, serialNuo, createDate, `length`, prefix)
+        value(#{number},#{name},#{billType},#{lastUpdateTime},#{serialNuo},#{createDate},#{length},#{prefix})
+    </insert>
+
+    <select id="findAll" resultType="com.kither.bean.CodeRule">
+        select <include refid="Base_Column_List" /> from t_ec_coderule
+    </select>
+
+    <select id="createNext" resultType="map">
+        call generateCodeRule(
+          coderule IN,
+          errormesage IN
+        );select @codeRule, @errorMessage
+    </select>
+
+</mapper>
