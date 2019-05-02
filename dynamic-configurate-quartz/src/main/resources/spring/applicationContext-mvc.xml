@@ -15,11 +15,28 @@
 
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
     <mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
-    <mvc:resources mapping="/page/**" location="classpath:/WEB-INF/static/"/>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver">
-        <property name="prefix" value="/WEB-INF/static/"/>
+    <!-- 使用thymeleaf模板解析器 -->
+    <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver" id="templateResolver">
+        <property name="prefix" value="/static/"/>
         <property name="suffix" value=".html"/>
+        <property name="templateMode" value="HTML5"/>
+        <property name="cacheable" value="false"/>
+        <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
+    <!-- thymeleaf模板引擎 -->
+    <bean class="org.thymeleaf.spring5.SpringTemplateEngine" id="templateEngine">
+        <property name="templateResolvers">
+            <list>
+                <ref bean="templateResolver"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- thymeleaf视图解析器 -->
+    <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver" id="viewResolver">
+        <property name="characterEncoding" value="UTF-8"/>
+        <property name="templateEngine" ref="templateEngine"/>
+    </bean>
 </beans>

@@ -5,13 +5,17 @@
 <mapper namespace="com.kither.mapper.QuartzMapper">
 
     <sql id="Base_Column_List">
-        id, `number`, `name` startDate, endDate, state, exeLink, cronExpression, `desc`, retryCount
+        id, `number`, `name`, startDate, endDate, state, exeLink, cronExpression, `desc`, retryCount
     </sql>
 
     <insert id="add" parameterType="quartzBaseBean">
         insert into t_ec_quartz(`number`, `name` startDate, endDate, state, exeLink, cronExpression, `desc`, retryCount)
         value(#{number},#{name},#{startDate},#{endDate},#{state},#{exeLink},#{cronExpression},#{desc}.#{retryCount})
     </insert>
+
+    <select id="find" resultType="quartzBaseBean">
+        select <include refid="Base_Column_List" /> from t_ec_quartz where id = #{id}
+    </select>
 
     <select id="findAll" resultType="quartzBaseBean">
         select

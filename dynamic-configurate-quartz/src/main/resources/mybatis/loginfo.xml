@@ -5,12 +5,12 @@
 <mapper namespace="com.kither.mapper.LogInfoMapper">
 
     <sql id="Base_Column_List">
-        id, `number`, `name` operate, `desc`, operateDate, operator, state
+        id, `number`, `name`, operate, `desc`, operateDate, operator, state
     </sql>
 
     <insert id="add" parameterType="com.kither.bean.LogInfo">
-        insert into t_ec_loginfo (`number`, `name` operate, `desc`, operateDate, operator, state)
-        value(#{number},#{name},#{operate}，#{desc},#{operateDate},#{operator},#{state})
+        insert into t_ec_loginfo (`number`, `name`, operate, `desc`, operateDate, operator, state)
+        value(#{number},#{name},#{operate},#{desc},#{operateDate},#{operator},#{state})
     </insert>
 
     <select id="findAll" resultType="com.kither.bean.LogInfo">

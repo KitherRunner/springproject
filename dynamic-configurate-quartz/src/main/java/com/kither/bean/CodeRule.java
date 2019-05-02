@@ -15,7 +15,7 @@ public class CodeRule extends BaseBean {
     @ApiModelProperty(value = "lastUpdateTime", name = "最后修改时间", notes = "最后修改时间", dataType = "date", required = false, readOnly = false)
     private Date lastUpdateTime; // 最后修改时间
     @ApiModelProperty(value = "serialNuo", name = "编号", notes = "编号", dataType = "string", required = false, readOnly = false)
-    private Integer serialNuo; // 编号
+    private Integer serialNo; // 编号
     @ApiModelProperty(value = "createDate", name = "创建时间", notes = "创建时间", dataType = "date", required = false, readOnly = false)
     private Date createDate; // 创建时间
     @ApiModelProperty(value = "length", name = "长度", notes = "长度", dataType = "int", required = true, readOnly = false)
@@ -39,12 +39,12 @@ public class CodeRule extends BaseBean {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    public Integer getSerialNuo() {
-        return serialNuo;
+    public Integer getSerialNo() {
+        return serialNo;
     }
 
-    public void setSerialNuo(Integer serialNuo) {
-        this.serialNuo = serialNuo;
+    public void setSerialNo(Integer serialNo) {
+        this.serialNo = serialNo;
     }
 
     public Date getCreateDate() {
@@ -69,5 +69,20 @@ public class CodeRule extends BaseBean {
 
     public void setPrefix(String prefix) {
         this.prefix = prefix;
+    }
+
+    @Override
+    public String toString() {
+        return "CodeRule{" +
+                "billType='" + billType + '\'' +
+                ", lastUpdateTime=" + lastUpdateTime +
+                ", serialNuo=" + serialNo +
+                ", createDate=" + createDate +
+                ", length=" + length +
+                ", id=" + getId() +
+                ", number=" + getNumber() +
+                ", name=" + getName() +
+                ", prefix='" + prefix + '\'' +
+                '}';
     }
 }

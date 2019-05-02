@@ -14,7 +14,7 @@ public class QuartzBaseBean extends BaseBean {
     @ApiModelProperty(value = "endDate", name = "endDate", notes = "endDate", dataType = "date", required = false, readOnly = false)
     private Date endDate; // 结束时间
     @ApiModelProperty(value = "state", name = "状态", notes = "状态", dataType = "int", required = true, readOnly = false)
-    private Integer state; // 1:启用；2:禁用
+    private Integer state; // 1:启用；0:禁用
     @ApiModelProperty(value = "exeLink", name = "执行地址", notes = "执行地址", dataType = "string", required = true, readOnly = false)
     private String exeLink; // 执行地址
     @ApiModelProperty(value = "cronExpression", name = "cron表达式", notes = "cron表达式", dataType = "string", required = true, readOnly = false)

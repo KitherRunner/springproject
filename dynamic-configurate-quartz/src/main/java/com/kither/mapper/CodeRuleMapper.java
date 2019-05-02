@@ -13,5 +13,5 @@ public interface CodeRuleMapper {
 
     List<CodeRule> findAll();
 
-    Map<String, String> createNext(String billType);
+    void createNext(Map<String, String> map);
 }

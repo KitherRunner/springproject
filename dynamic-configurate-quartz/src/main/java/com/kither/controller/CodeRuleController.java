@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -17,6 +18,14 @@ public class CodeRuleController {
 
     @Autowired
     private CodeRuleService codeRuleService;
+
+    @GetMapping("coderule")
+    public ModelAndView toCodeRule() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("coderules");
+        mv.addObject("coderules", codeRuleService.findAll());
+        return mv;
+    }
 
     @GetMapping(value = "rules", produces = "application/json;chasrset=utf-8")
     @ResponseBody

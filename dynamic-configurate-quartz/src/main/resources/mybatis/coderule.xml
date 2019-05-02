@@ -5,7 +5,7 @@
 <mapper namespace="com.kither.mapper.CodeRuleMapper">
 
     <sql id="Base_Column_List">
-        id, `number`, `name` billType, lastUpdateTime, serialNuo, createDate, `length`, prefix
+        id, `number`, `name`, billType, lastUpdateTime, serialNo, createDate, `length`, prefix
     </sql>
 
     <insert id="add" parameterType="com.kither.bean.CodeRule">
@@ -14,14 +14,17 @@
     </insert>
 
     <select id="findAll" resultType="com.kither.bean.CodeRule">
-        select <include refid="Base_Column_List" /> from t_ec_coderule
+        select
+        <include refid="Base_Column_List"/>
+        from t_ec_coderule
     </select>
 
-    <select id="createNext" resultType="map">
-        call generateCodeRule(
-          coderule IN,
-          errormesage IN
-        );select @codeRule, @errorMessage
+    <select id="createNext" statementType="CALLABLE" parameterType="map">
+        call generateBillNumber(
+          #{billType, mode=IN, jdbcType=VARCHAR},
+          #{codeRule, mode=OUT, jdbcType=VARCHAR},
+          #{errorMessage, mode=OUT, jdbcType=VARCHAR}
+        )
     </select>
 
 </mapper>

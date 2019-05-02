@@ -10,6 +10,8 @@ public interface QuartzMapper {
 
     void add(QuartzBaseBean info);
 
+    QuartzBaseBean find(Integer id);
+
     List<QuartzBaseBean> findAll();
 
     int enable(Integer id);
