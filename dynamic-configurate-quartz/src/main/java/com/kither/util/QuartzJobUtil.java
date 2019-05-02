@@ -2,8 +2,6 @@ package com.kither.util;
 
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
-import org.springframework.core.task.TaskExecutor;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.Date;
 
@@ -11,16 +9,7 @@ public class QuartzJobUtil {
 
     private static final String EXE_METHOD = "execute";
 
-    private static TaskExecutor executor;
-
     private static final SchedulerFactory factory = new StdSchedulerFactory();
-
-    static {
-        executor = new ThreadPoolTaskExecutor();
-        ((ThreadPoolTaskExecutor) executor).setMaxPoolSize(100);
-        ((ThreadPoolTaskExecutor) executor).setCorePoolSize(20);
-        ((ThreadPoolTaskExecutor) executor).setQueueCapacity(20);
-    }
 
     public static void stop(Class beanName) throws Exception {
         Scheduler scheduler = factory.getScheduler();
