@@ -59,7 +59,7 @@ public class QuartzController {
             if (baseBean.getState() == 0) {
                 // 启用
                 Class name = Class.forName(baseBean.getExeLink());
-                QuartzJobUtil.start(name, baseBean.getCronExpression(), baseBean.getStartDate());
+                QuartzJobUtil.start(name, baseBean.getCronExpression(), baseBean.getStartDate(), baseBean.getEndDate());
                 int enable = quartzService.enable(id);
                 if (enable != 0) {
                     response.setSuccess(true);

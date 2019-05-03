@@ -20,14 +20,14 @@ public class QuartzJobUtil {
         }
     }
 
-    public static void start(Class beanName, String cronExpression, Date startDate) throws Exception {
+    public static void start(Class beanName, String cronExpression, Date startDate, Date endDate) throws Exception {
         // 查询有没有对应的job
         Scheduler scheduler = factory.getScheduler();
         JobDetail jobDetail = JobBuilder.newJob(beanName)
                 .withIdentity(beanName.getName(), beanName.getName())
                 .build();
         CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(beanName.getName(), beanName.getName())
-                .withSchedule(CronScheduleBuilder.cronSchedule(cronExpression)).startAt(startDate).build();
+                .withSchedule(CronScheduleBuilder.cronSchedule(cronExpression)).startAt(startDate).endAt(endDate).build();
         scheduler.scheduleJob(jobDetail, trigger);
         scheduler.start();
     }
