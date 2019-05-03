@@ -34,12 +34,13 @@ public class QuartzController {
 //        return quartzService.findAll();
 //    }
 
-    // 该注解标识的方法会在controller中的每个其他方法执行前先执行，相当于往Model中注入属性，我们可以在其他方法中获取这个属性值(类似下面参数使用@ModelAttribute修饰获取)
+    // 该注解标识的方法会在controller中的每个其他@RequestMapping方法执行前先执行，相当于往Model中注入属性(默认存储到request域中)，我们可以在其他方法中获取这个属性值(类似下面参数使用@ModelAttribute修饰获取)
     @ModelAttribute("quartzs")
     public List<QuartzBaseBean> quartzs() {
         return quartzService.findAll();
     }
 
+    // 这里参数不加@ModelAttribute注解也是先从request域获取quartzs数据
     @GetMapping(value = "quartzs", produces = "application/json;chasrset=utf-8")
     @ResponseBody
     @ApiOperation(value = "findAll", notes = "查询所有自动任务", tags = "quartz", httpMethod = "GET")
