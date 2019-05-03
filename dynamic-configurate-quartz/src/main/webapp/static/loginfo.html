@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LogInfo</title>
+    <style>
+        table {
+            border-spacing: 0px;
+            height: 100px;
+            overflow-y: scroll;
+        }
+
+        th, td {
+            border: 1px solid cyan;
+            text-align: center;
+            padding: 5px 10px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<!-- 页面要走controller转过来，要不然不走模板引擎，无法解析 -->
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>number</th>
+        <th>name</th>
+        <th>operate</th>
+        <th>desc</th>
+        <th>operateDate</th>
+        <th>operator</th>
+        <th>state</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="loginfo : ${loginfos}">
+        <td th:text="${loginfo.id}"></td>
+        <td th:text="${loginfo.number}"></td>
+        <td th:text="${loginfo.name}"></td>
+        <td th:text="${loginfo.operate}"></td>
+        <td th:text="${loginfo.desc}"></td>
+        <!-- 日期格式化 -->
+        <td th:text="${#dates.format(loginfo.operateDate,'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${loginfo.operator}"></td>
+        <td th:text="${loginfo.state == 1 ? '成功' : '失败'}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

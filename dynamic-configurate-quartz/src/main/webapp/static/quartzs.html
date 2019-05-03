@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quartz</title>
+    <style>
+        table {
+            border-spacing: 0px;
+        }
+
+        th, td {
+            border: 1px solid cyan;
+            text-align: center;
+            padding: 5px 10px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<!-- 页面要走controller转过来，要不然不走模板引擎，无法解析 -->
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>number</th>
+        <th>name</th>
+        <th>startDate</th>
+        <th>endDate</th>
+        <th>state</th>
+        <th>exeLink</th>
+        <th>cronExpression</th>
+        <th>desc</th>
+        <th>retryCount</th>
+        <th>operate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="quartz : ${quartzs}">
+        <td th:text="${quartz.id}"></td>
+        <td th:text="${quartz.number}"></td>
+        <td th:text="${quartz.name}"></td>
+        <!-- 日期格式化 -->
+        <td th:text="${#dates.format(quartz.startDate,'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${#dates.format(quartz.endDate,'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${quartz.state}"></td>
+        <td th:text="${quartz.exeLink}"></td>
+        <td th:text="${quartz.cronExpression}"></td>
+        <td th:text="${quartz.desc}"></td>
+        <td th:text="${quartz.retryCount}"></td>
+        <td>
+            <a th:href="@{quartz/enable/{id}(id=${quartz.id})}" th:text="启用" th:if="${quartz.state} eq 0"/>
+            <a th:href="@{quartz/disable/{id}(id=${quartz.id})}" th:text="禁用" th:if="${quartz.state == 1}"/>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

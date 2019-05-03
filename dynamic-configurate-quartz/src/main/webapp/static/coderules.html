@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeRule</title>
+    <style>
+        table {
+            border-spacing: 0px;
+        }
+
+        th, td {
+            border: 1px solid cyan;
+            text-align: center;
+            padding: 5px 10px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<!-- 页面要走controller转过来，要不然不走模板引擎，无法解析 -->
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>number</th>
+        <th>name</th>
+        <th>billType</th>
+        <th>serialNo</th>
+        <th>length</th>
+        <th>lastUpdateTime</th>
+        <th>createDate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="coderule : ${coderules}">
+        <td th:text="${coderule.id}"></td>
+        <td th:text="${coderule.number}"></td>
+        <td th:text="${coderule.name}"></td>
+        <td th:text="${coderule.billType}"></td>
+        <td th:text="${coderule.serialNo}"></td>
+        <td th:text="${coderule.length}"></td>
+        <!-- 日期格式化 -->
+        <td th:text="${#dates.format(coderule.lastUpdateTime,'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${#dates.format(coderule.createDate,'yyyy-MM-dd HH:mm:ss')}"></td>
+    </tr>
+    </tbody>
+</table>
+</ul>
+</body>
+</html>
