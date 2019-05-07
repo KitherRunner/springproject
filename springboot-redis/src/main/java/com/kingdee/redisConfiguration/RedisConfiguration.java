@@ -2,6 +2,7 @@ package com.kingdee.redisConfiguration;
 
 import com.kingdee.bean.Employee;
 import com.kingdee.bean.User;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -16,6 +17,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import java.time.Duration;
 
 @Configuration
+@EnableCaching
 public class RedisConfiguration {
 
     private Duration duration = Duration.ZERO;
@@ -51,7 +53,7 @@ public class RedisConfiguration {
                 .entryTtl(duration)
                 // 设置key的序列化方式
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-                // 设置value的序列化方式
+                // 设置value的序列化方式，不能随意指定类型，需要与使用处的返回值类型保持一致
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new Jackson2JsonRedisSerializer(User.class)))
                 .disableCachingNullValues();
         RedisCacheManager redisCacheManager = RedisCacheManager.builder(connectionFactory)
