@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Service
 // 指定cacheManager
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
         // 不使用注解来获取对应的值时，需要自己手动去获取并做相应的更新
         String s = stringRedisTemplate.opsForValue().get("user::" + id);
         User user = null;
-        if (s == null) {
+        if (StringUtils.isEmpty(s)) {
             user = userMapper.find(id);
             stringRedisTemplate.opsForValue().set("user::" + id, gson.toJson(user));
         } else {
