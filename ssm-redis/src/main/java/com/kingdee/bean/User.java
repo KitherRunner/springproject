@@ -6,22 +6,9 @@ public class User implements Serializable {
     private static final long serialVersionUID = 2684609809780170734L;
     private Integer id;
     private String name;
-    private String password;
-    private Integer gender;
-
-    public User() {
-    }
-
-    public User(Integer id, String name, String password, Integer gender) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-        this.gender = gender;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
+    private String gender;
+    private double salary;
+    private String info;
 
     public Integer getId() {
         return id;
@@ -39,19 +26,27 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Integer getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Integer gender) {
+    public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 }
