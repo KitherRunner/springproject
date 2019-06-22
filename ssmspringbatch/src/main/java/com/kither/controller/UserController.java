@@ -26,8 +26,9 @@ public class UserController {
         return userService.find(id);
     }
 
-    @PostMapping("add")
-    public User add(User user) {
+    @PostMapping(value = "add", consumes = "application/json")
+    // 传递过来的参数是json字符串的时候，必须要使用@RequestBody注解，否则无法映射成对象
+    public User add(@RequestBody User user) {
         userService.insert(user);
         return userService.find(user.getId());
     }
