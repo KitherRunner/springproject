@@ -4,7 +4,4 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kingdee.mapper.UserMapper">
 
-    <select id="find" resultType="com.kingdee.bean.User" parameterType="_int">
-        select  id,name,password,gender from user where id = #{id}
-    </select>
 </mapper>
