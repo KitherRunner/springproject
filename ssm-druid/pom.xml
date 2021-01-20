@@ -84,7 +84,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.9.7</version>
+            <version>2.9.10.7</version>
         </dependency>
         <!-- spring4.0依赖servlet3.0及以上版本 -->
         <!-- 在该项目中使用了druid监控访问的servlet，所有需要导入该依赖(使用除了DispatcherServlet外的servlet时都需要导入此依赖) -->
